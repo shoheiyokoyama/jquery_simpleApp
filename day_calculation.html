@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Day Calculation</title>
+</head>
+<body>
+  <h1>Day Calculation</h1>
+  <p>Birthday: <input type="text" name="birthday" id="birthday" value="1984-12-05"></p>
+  <p><input type="button" value="calculation" onclick="getAge();"></p>
+  <p>生まれて<span id="daysPast">???</span>日：<span id="age">???</span>才</p>
+  <script>
+    function getAge() {
+      var birthday = document.getElementById('birthday').value.split("-");
+      var day1 = new Date(birthday[0], birthday[1] - 1, birthday[2]);
+      var day2 = new Date();
+      var diff = day2.getTime() - day1.getTime();
+      var daysPast = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      var age = Math.floor(daysPast / 365.25);
+      document.getElementById('daysPast').innerHTML = daysPast;
+      document.getElementById('age').innerHTML = age;
+    }
+  </script>
+</body>
+</html>
